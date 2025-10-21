@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "2b62ec87-da4b-4fc6-b296-d600e9557323",
+		"name": "backend-express-postgresql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48945915",
+		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-2b62ec87-da4b-4fc6-b296-d600e9557323?action=share&source=collection_link&creator=48945915"
+	},
+	"item": [
+		{
+			"name": "local requests",
+			"item": [
+				{
+					"name": "root",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}",
+							"host": [
+								"{{baseURLlocal}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Ramin Lopez\",\r\n  \"email\": \"r.lopez@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/register",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURLlocal",
+			"value": ""
+		}
+	]
+}
