@@ -1,15 +1,12 @@
 // src/server.ts
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
-// Modifique esta linha
-import { connectDB } from './database/connection'; // Importa a função
+import { connectDB } from './database/connection';
 import authRoutes from './routes/authRoutes';
+import movieRoutes from './routes/movieRoutes'; // <--- 1. IMPORTAR
 import logger from './utils/logger';
 
-// ... (o resto do arquivo é igual até o app.listen) ...
-//
-
-// Carrega as variáveis de ambiente do arquivo .env
+// ... (dotenv.config() e app = express()) ...
 dotenv.config();
 
 const app = express();
@@ -20,13 +17,15 @@ app.use(express.json());
 
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
+app.use('/api/movies', movieRoutes); // <--- 2. REGISTRAR
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
-  res.send('API de Autenticação com JWT (PostgreSQL) está rodando!');
+  // <--- 3. ATUALIZAR MENSAGEM ---
+  res.send('API de Autenticação com JWT (e Filmes) está rodando!');
 });
 
-// Middleware de tratamento de erros de JSON mal formatado
+// ... (Middleware de tratamento de erros e startServer() permanecem iguais) ...
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof SyntaxError && 'body' in err) {
     logger.error('Requisição com JSON mal formatado recebida.', err);
@@ -35,9 +34,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-// Inicia o servidor APÓS conectar ao banco
 const startServer = async () => {
-  await connectDB(); // Conecta e sincroniza o banco
+  await connectDB();
   
   app.listen(PORT, () => {
     logger.info(`Servidor rodando em http://localhost:${PORT}`);

@@ -36,6 +36,18 @@ if (NODE_ENV === 'production' && DATABASE_URL) {
   });
 }
 
+import User from '../models/User';
+import Movie from '../models/Movie';
+
+User.hasMany(Movie, {
+  foreignKey: 'userId',
+  as: 'movies',
+});
+Movie.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user',
+});
+
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
