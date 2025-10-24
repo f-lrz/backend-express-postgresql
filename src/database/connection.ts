@@ -3,6 +3,8 @@ import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import logger from '../utils/logger';
 
+require('pg');
+
 dotenv.config();
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, DB_DIALECT, NODE_ENV, DATABASE_URL } = process.env;
