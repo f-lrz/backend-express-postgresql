@@ -1,15 +1,386 @@
 {
 	"info": {
-		"_postman_id": "2b62ec87-da4b-4fc6-b296-d600e9557323",
-		"name": "backend-express-postgresql",
+		"_postman_id": "449dcd71-99b9-40f1-a6c6-769403c42f8f",
+		"name": "backend-express-postgresql (II)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "48945915",
-		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-2b62ec87-da4b-4fc6-b296-d600e9557323?action=share&source=collection_link&creator=48945915"
+		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-449dcd71-99b9-40f1-a6c6-769403c42f8f?action=share&source=collection_link&creator=48945915"
 	},
 	"item": [
 		{
 			"name": "local requests",
 			"item": [
+				{
+					"name": "CRUD filmes casos de sucesso",
+					"item": [
+						{
+							"name": "cadastro filme",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Interestelar\",\r\n  \"director\": \"Christopher Nolan\",\r\n  \"genre\": \"Ficção\",\r\n  \"year\": 2014,\r\n  \"rating\": 9.1,\r\n  \"watched\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar todos os filmes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar filme",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies?title=Interestelar&genre=Ficção&watched=true",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Interestelar"
+										},
+										{
+											"key": "genre",
+											"value": "Ficção"
+										},
+										{
+											"key": "watched",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar filme por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68fba263aade6e7b3c5408a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar filme",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Interestelar\",\r\n  \"year\": 2014,\r\n  \"watched\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68fba263aade6e7b3c5408a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar filme parcialmente",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"watched\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68fba263aade6e7b3c5408a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletar filme",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68fba263aade6e7b3c5408a7"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "CRUD filmes casos de erro",
+					"item": [
+						{
+							"name": "sem token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "token inválido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}a",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "requisição mal formatada (JSON)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Filme Incompleto\"\r\n  \"genre\": \"Suspense\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "requisição mal formatada (validação)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"director\": \"Diretor sem Título\",\r\n  \"genre\": \"Drama\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "acesso indevido",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68f94916beb8ac534d22b9ac",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68f94916beb8ac534d22b9ac"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
 				{
 					"name": "root",
 					"protocolProfileBehavior": {
@@ -20,12 +391,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{baseURLlocal}}",
@@ -37,13 +403,13 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "cadastro",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Ramin Lopez\",\r\n  \"email\": \"r.lopez@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Nilton Menezes\",\r\n  \"email\": \"n.menezes@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -61,6 +427,105 @@
 								"register"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Salva o token na variável 'token' do ambiente\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);\r",
+									"console.log(\"Token salvo no ambiente!\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"n.menezes@email.com\",\r\n    \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/login",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hosted requests",
+			"item": [
+				{
+					"name": "root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURLhosted}}",
+							"host": [
+								"{{baseURLhosted}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Nilton Menezes\",\r\n  \"email\": \"n.menezes@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLhosted}}/api/auth/register",
+							"host": [
+								"{{baseURLhosted}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -89,12 +554,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "baseURLlocal",
-			"value": ""
 		}
 	]
 }
