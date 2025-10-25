@@ -96,14 +96,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"raw": "{{baseURLlocal}}/api/movies/3",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68fba263aade6e7b3c5408a7"
+										"3"
 									]
 								}
 							},
@@ -116,7 +116,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"title\": \"Interestelar\",\r\n  \"year\": 2014,\r\n  \"watched\": false\r\n}",
+									"raw": "{\r\n  \"title\": \"Interestelarrr\",\r\n  \"year\": 2014,\r\n  \"watched\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -124,14 +124,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"raw": "{{baseURLlocal}}/api/movies/3",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68fba263aade6e7b3c5408a7"
+										"3"
 									]
 								}
 							},
@@ -144,7 +144,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"watched\": true\r\n}",
+									"raw": "{\r\n  \"watched\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -152,14 +152,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"raw": "{{baseURLlocal}}/api/movies/3",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68fba263aade6e7b3c5408a7"
+										"3"
 									]
 								}
 							},
@@ -171,14 +171,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"raw": "{{baseURLlocal}}/api/movies/3",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68fba263aade6e7b3c5408a7"
+										"3"
 									]
 								}
 							},
@@ -332,14 +332,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68f94916beb8ac534d22b9ac",
+									"raw": "{{baseURLlocal}}/api/movies/4",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68f94916beb8ac534d22b9ac"
+										"4"
 									]
 								}
 							},
@@ -409,7 +409,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Nilton Menezes\",\r\n  \"email\": \"n.menezes@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Rebeca Dato\",\r\n  \"email\": \"r.dato@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -453,7 +453,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"n.menezes@email.com\",\r\n    \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"r.dato@email.com\",\r\n    \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -485,9 +485,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURLhosted}}",
+							"raw": "{{baseURLhostedpost}}",
 							"host": [
-								"{{baseURLhosted}}"
+								"{{baseURLhostedpost}}"
 							]
 						}
 					},
@@ -500,7 +500,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Nilton Menezes\",\r\n  \"email\": \"n.menezes@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Nivaldo Santos\",\r\n  \"email\": \"n.santos@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -508,9 +508,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURLhosted}}/api/auth/register",
+							"raw": "{{baseURLhostedpost}}/api/auth/register",
 							"host": [
-								"{{baseURLhosted}}"
+								"{{baseURLhostedpost}}"
 							],
 							"path": [
 								"api",
@@ -524,8 +524,28 @@
 				{
 					"name": "login",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"n.santos@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLhostedpost}}/api/auth/login",
+							"host": [
+								"{{baseURLhostedpost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
