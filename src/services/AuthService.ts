@@ -48,8 +48,16 @@ class AuthService {
 
       if (!secret) throw new Error('Chave JWT não configurada.');
       
-      const token = jwt.sign({ id: user.id, name: user.name }, secret, { expiresIn });
+      const token = jwt.sign(
+        { id: user.id, name: user.name },
+        secret,
+        expiresIn ? { expiresIn: expiresIn } : undefined // Pass options conditionally
+      );
+
       logger.info(`Login bem-sucedido para o usuário: ${email}`);
+
+      //const token = jwt.sign({ id: user.id, name: user.name }, secret, { expiresIn });
+      //logger.info(`Login bem-sucedido para o usuário: ${email}`);
       return token;
 
     } catch (error: any) {
