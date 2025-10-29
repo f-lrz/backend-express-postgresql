@@ -3,10 +3,10 @@ import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './database/connection';
 import authRoutes from './routes/authRoutes';
-import movieRoutes from './routes/movieRoutes'; // <--- 1. IMPORTAR
+import movieRoutes from './routes/movieRoutes';
 import logger from './utils/logger';
 
-// ... (dotenv.config() e app = express()) ...
+// Carrega as variáveis de ambiente
 dotenv.config();
 
 const app = express();
@@ -17,15 +17,14 @@ app.use(express.json());
 
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
-app.use('/api/movies', movieRoutes); // <--- 2. REGISTRAR
+app.use('/api/movies', movieRoutes);
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
-  // <--- 3. ATUALIZAR MENSAGEM ---
   res.send('API de Autenticação com JWT (e Filmes) está rodando!');
 });
 
-// ... (Middleware de tratamento de erros e startServer() permanecem iguais) ...
+// Middleware de tratamento de erros de JSON mal formatado
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof SyntaxError && 'body' in err) {
     logger.error('Requisição com JSON mal formatado recebida.', err);
@@ -34,12 +33,23 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-const startServer = async () => {
+// --- ALTERAÇÃO PARA VERCEL ---
+
+// Função assíncrona para garantir que a base de dados conecta ANTES de tudo
+const startDatabase = async () => {
   await connectDB();
-  
+};
+
+// Inicia a conexão com a base de dados
+startDatabase();
+
+// O app.listen() só deve ser chamado em ambiente de desenvolvimento (local)
+// A Vercel (produção) gere o servidor por si só.
+if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     logger.info(`Servidor rodando em http://localhost:${PORT}`);
   });
-};
+}
 
-startServer();
+// Exporta o 'app' para que a Vercel o possa usar
+export default app;
