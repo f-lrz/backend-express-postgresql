@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 const allowedOrigins = [
   'http://localhost:5173', // Para desenvolvimento local
-  'https://frontend-react-mongodb.filipe2025.tech' // Seu frontend hospedado (ajuste se for outro)
+  'https://frontend-react-postgresql.filipe2025.tech' // Seu frontend hospedado (ajuste se for outro)
   // Adicione a URL do frontend do PostgreSQL aqui se for diferente
   // 'https://frontend-react-postgresql.filipe2025.tech'
 ];
